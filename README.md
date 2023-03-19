@@ -1,11 +1,21 @@
 # Laurant-Bookstore-2
 
-Laurant Bookstore is a web application that combines an online library and a webstore system into one platform. The application is built on Django, a Python-based web framework, and provides users with an intuitive and user-friendly interface for managing their books and purchasing them online.
+A livraria Laurant é uma aplicação web que combina uma biblioteca online e um sistema de loja virtual em uma única plataforma. A aplicação é construída em cima do Django, um framework web baseado em Python, e fornece aos usuários uma interface intuitiva e amigável para gerenciar seus livros e comprá-los online.
 
-The online library component of Laurant Bookstore allows users explore new books and authors, as well as their relationships. Users will find books and authors, and view them in a clear and organized manner. The application also provides search functionality to help users find specific books and authors quickly and easily.
+O componente de biblioteca online da Laurant Bookstore permite que os usuários explorem novos livros e autores, bem como suas relações. Os usuários poderão encontrar livros e autores e visualizá-los de maneira clara e organizada. A aplicação também fornece funcionalidade de busca para ajudar os usuários a encontrar livros e autores específicos rapidamente e facilmente.
 
-The webstore component of Laurant Bookstore allows users to purchase books online. Users can browse through the available books, view book details, and add them to their shopping cart. The application supports secure payment processing, and users can track the status of their orders through the platform.
+O componente de loja virtual da Laurant Bookstore permite que os usuários comprem livros online. Os usuários podem navegar pelos livros disponíveis, ver detalhes do livro e adicioná-los ao carrinho de compras.
 
-In addition to the above features, Laurant Bookstore also provides an administrator panel that allows the site owner to manage the content of the site, including books, authors, orders, and user accounts. The application also includes user authentication and authorization to ensure that only authorized users can access and modify the content of the site.
+Além das funcionalidades acima, a Laurant Bookstore também fornece um painel de administrador que permite ao proprietário do site gerenciar o conteúdo do site, incluindo livros, autores, pedidos e contas de usuário. A aplicação também inclui autenticação e autorização de usuário para garantir que apenas usuários autorizados possam acessar e modificar o conteúdo do site.
 
-Overall, Laurant Bookstore is a powerful and versatile web application that provides users with a comprehensive online library and webstore system.
+Em geral, a Laurant Bookstore é uma aplicação web poderosa e versátil que fornece aos usuários uma biblioteca online e um sistema de loja virtual abrangentes.
+
+## Link do Design
+
+Se você quiser conferir o modelo de design utilizado na construção da nossa livraria, basta **[clicar aqui](https://www.figma.com/file/TlK4mHqPv4OLwKbSqaKl8x/laurantbookstore?node-id=0%3A1&t=DBG3JOFCujoVNokO-1)**. Nele, você poderá visualizar como a nossa plataforma foi concebida, desde a escolha das cores até a disposição dos elementos na tela.
+
+O modelo de design da Laurant Bookstore é baseado em um layout limpo e organizado, que permite uma navegação intuitiva e fácil de entender. O design também incorpora os elementos da marca da livraria, criando uma experiência consistente e agradável para os usuários.
+
+Além disso, o modelo de design foi implementado de forma responsiva, adaptando-se perfeitamente a diferentes tamanhos de tela, como celulares e tablets, sem comprometer a usabilidade ou a qualidade visual.
+
+Em resumo, o modelo de design da Laurant Bookstore é uma combinação inteligente de funcionalidade, estética e marca, criando uma experiência de usuário excepcional para quem acessa a nossa plataforma.
