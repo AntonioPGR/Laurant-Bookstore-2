@@ -6,7 +6,22 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
-    "*.pdf": true
+    "*.pdf": true,
+    "venv": true,
+    "setup/__pycache__": true,
+    "livraria/__pycache__": true,
+    ".vscode": true,
+    ".gitignore": true,
+    "LICENSE": true,
+    "README.md": true
   },
-  "hide-files.files": []
+  "hide-files.files": [
+    "venv",
+    "setup/__pycache__",
+    "livraria/__pycache__",
+    ".vscode",
+    ".gitignore",
+    "LICENSE",
+    "README.md"
+  ]
 }
