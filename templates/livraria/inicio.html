@@ -1,0 +1,66 @@
+
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cardAutor.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cardBook.css' %}">
+{% endblock styles %}
+
+{% block content %}
+  <section class="hero">
+
+    <div class="hero__content">
+      <h2 class="content__subtitle" >Olá!</h2>
+      <h1 class="content__title" >Seja bem vindo a Laurant</h1>
+      <p class="content__paragraph">
+        Entre com sua conta e busque pelos melhores livros e autores do mercado, com os menores preços e a maior facilidade na hora de comprar
+      </p>
+      <button class="content__button">registre-se já</button>
+    </div>
+
+    <div class="hero__slides">
+      <img class="slides__image" src="{% static 'images/bookAd1.jpeg' %}" alt="Propaganda sobre coleção de livros de saude mental em destaque">
+    </div>
+
+  </section>
+
+  <section class="mainSec">
+    <h2 class="mainSec__title">Nomes ao redor do mundo!</h2>
+    <p class="mainSec__subtitle">veja os principais autores da semana que se destacaram em nossa plataforam</p>
+    <div class="cardContainer">
+      <article class="cardAutor">
+        <div class="cardAutor__imgContainer">
+          <img class="cardAutor__img" src="images/escritor.jpg" alt="">
+        </div>
+        <section class="cardAutor__content">
+          <h3 class="cardAutor__nome">John L.</h3>
+          <p class="cardAutor__descricao">Americano focado em escrita de terror e suspense</p>
+        </section>
+      </article>
+    </div>
+  </section>
+
+  <section class="mainSec">
+    <h2 class="mainSec__title">Biblioteca Semanal</h2>
+    <p class="mainSec__subtitle">Todo conteúdo literário que o mundo inteiro mais apreciou na ultima semana</p>
+    <div class="cardContainer">
+      <article class="bookCard">
+        <div class="bookCard__imgContainer"><img class="bookCard__img" src="images/eAssimQueComeca.jpg" alt=""></div>
+        <section class="bookCard__content">
+          <h3 class="bookCard__titulo">É assim que começa</h3>
+          <a class="bookCard__autor" href="autor.html">Collen Hoover</a>
+          <p class="bookCard__preco">R$33,00</p>
+          <p class="bookCard__categorias">
+            <a class="bookCard__categoria" href="">Romance</a>
+            e
+            <a class="bookCard__categoria" href="">Drama</a>
+            asd aasd a das asd a 
+          </p>
+        </section>
+        <i class="bookCard__saveIconContainer"><img class="bookCard__salveIcon" src="icons/favorite.svg" alt=""></i>
+      </article>
+    </div>
+  </section>
+{% endblock content %}

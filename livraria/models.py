@@ -12,7 +12,7 @@ class Autor(models.Model):
   
   nome = models.CharField(max_length=30, blank=False, null=False)
   foto = models.ImageField(upload_to="autores/%d-%b")
-  biografia = models.TextField(max_length=1000, blank=False, null=False)
+  biografia = models.TextField(max_length=2000, blank=False, null=False)
   nascimento = models.DateField(verbose_name="Data de nascimento", blank=False, null=False)
   morte = models.DateField(verbose_name="Data de morte", blank=True, null=True, help_text="Caso ainda vivo, deixar em branco")
   genero_literario = models.ForeignKey(GeneroLiterario, on_delete=models.SET_NULL, null=True, blank=True)
@@ -28,8 +28,9 @@ class Livro(models.Model):
   autor = models.ForeignKey(Autor, on_delete=models.SET_NULL, null=True, blank=False)
   preco = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=False)
   desconto = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-  sinopse = models.TextField(max_length=1000, blank=False, null=False)
+  sinopse = models.TextField(max_length=2000, blank=False, null=False)
   genero_literario = models.ForeignKey(GeneroLiterario, on_delete=models.SET_NULL, null=True, blank=True)
+  capa = models.ImageField(upload_to="livros/%d-%b",null=False, blank=False)
   
   def __str__(self) -> str:
     return self.titulo

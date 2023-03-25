@@ -1,0 +1,52 @@
+.cardAutor{
+  box-sizing: border-box;
+  width: 288px;
+  height: 116px;
+
+  cursor: pointer;
+
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: .5rem;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--textoSecundario);
+  padding: .5rem;
+  border-radius: 1.25rem;
+
+  transition: filter .3s;
+}
+
+.cardAutor:hover{
+  filter: brightness(.8);
+}
+
+.cardAutor__imgContainer{
+  width: 100px;
+  height: 100px;
+}
+
+.cardAutor__img{
+  height: 100%;
+  width: 100%;
+  border-radius: .5rem;
+  object-fit: cover;
+}
+
+.cardAutor__content{
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  height: 100px;
+}
+
+.cardAutor__nome{
+  font: var(--titleP);
+  margin-bottom: .5rem;
+}
+
+.cardAutor__descricao{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 100%;
+}

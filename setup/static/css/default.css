@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+:root{
+
+  /* TEXTOS */
+  --font: 'Libre Caslon Text', serif;
+  --bodyP: 0.8125rem var(--font);
+  --bodyM: 1rem var(--font);
+  --bodyMLinks: underline 1rem var(--font);
+  --bodyG: 1.25rem var(--font);
+  --botao: 1.25rem var(--font);
+  --titleP: 1.5625rem  var(--font);
+  --titleM: 1.9375rem var(--font);
+  --titleG: 2.4375rem var(--font);
+  --headlineP: 30625rem var(--font);
+
+  /* CORES */
+  --fundo: #403022;
+  --fundoContrastado: #8c5d42;
+  --texto: #F4F1ED;
+  --textoSecundario: #F2DCC9;
+  --destaque: #F27777;
+  --acoes: #2E7C8C;
+  --desabilitado: #D8D8D8;
+  --errors: #FF0000;
+  --preto: #000;
+  --sucessos: #319A00;
+}
+
+html, body{
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  background-color: var(--fundo);
+}
+
+.container{
+  max-width: 1226px;
+  padding: 0 24px;
+  margin: auto;
+}

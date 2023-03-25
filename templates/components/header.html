@@ -1,0 +1,16 @@
+{% load static %}
+<header class="header">
+    
+  <div class="header__logoContainer">
+    <img class="header__logo" src="{% static 'images/logoLaurant.svg' %}" alt="Biblioteca e Livraria virtual laurant">
+  </div>
+  <div class="header__searchContainer">
+    <input class="search__input" type="text" placeholder="Procurando algo?">
+    <div class="search__iconContainer"><img class="search__icon" src="{% static 'icons/search.svg' %}" alt="Buscar"></div>
+  </div>
+  <nav class="header__navmenu">
+    <img class="navmenu__icon" src="{% static 'icons/cart.svg' %}" alt="Carrinho">
+    <img class="navmenu__icon" src="{% static 'icons/person.svg' %}" alt="Perfi
+    ">
+  </nav>
+</header>
