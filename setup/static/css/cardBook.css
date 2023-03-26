@@ -18,6 +18,15 @@
   transition: filter .3s;
 }
 
+.bookCard__imgContainer{
+  height: 148px;
+}
+
+.bookCard__img{
+  height: 100%;
+  object-fit: cover;
+}
+
 .bookCard:hover{
   filter: brightness(.8);
 }
