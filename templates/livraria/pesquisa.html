@@ -1,0 +1,30 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/pesquisa.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cardBook.css' %}">
+{% endblock styles %}
+
+{% block content %}
+  <section class="search__configs">
+    <h1 class="configs__searchQuery">Resultados para a pesquisa: "{{searchQuery}}"</h1>
+  </section>
+  <section class="search__results">
+    {% for livro in livros %}
+      <article class="bookCard">
+        <div class="bookCard__imgContainer">
+          <a href="{% url 'livro' livro.id %}"><img class="bookCard__img" src="{{ livro.capa.url }}" alt=""></a>
+        </div>
+        <section class="bookCard__content">
+          <h3 class="bookCard__titulo"> <a href="{% url 'livro' livro.id %}">{{ livro.titulo }} </a></h3>
+          <p class="bookCard__autor"><a href="{% url 'autor' livro.autor.id %}"> {{ livro.autor }} </a></p>
+          <p class="bookCard__preco"> {{ livro.preco }} </p>
+          <p class="bookCard__categorias">
+            <a class="bookCard__categoria" href=""> {{ livro.genero_literario }} </a>
+          </p>
+        </section>
+      </article>
+    {% endfor %}
+  </section>
+{% endblock content %}

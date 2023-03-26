@@ -1,0 +1,48 @@
+
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/livro.css' %}">
+{% endblock styles %}
+
+{% block content %}
+  <article class="livro">
+    <section class="livro__compra">
+      <div class="livro__imageContainer">
+        <img src="{{ livro.capa.url }}" alt="" class="livro__image">
+      </div>
+      <section class="livro__contents">
+
+        <div class="livro__tituloContainer">
+          <div class="livro__titulos">
+            <h1 class="livro__titulo">{{ livro.titulo }}</h1>
+            <a class="livro__autor" href="{% url 'autor' livro.autor.id %}">{{ livro.autor }}</a>
+          </div>
+          <i class="livro__favorito">
+            <img src="{% static 'icons/favorite.svg' %}" alt="" class="favorito__imagem">
+          </i>
+        </div>
+
+        <div class="livro__info">
+          <p class="livro__preco">R$ {{ livro.preco }}</p>
+          <p class="livro__parcelar">Em até 10x sem juros!</p>
+          <button class="botao livro__adicionarCarrinho">
+            pôr no carrinho
+          </button>
+        </div>
+
+      </section>
+    </section>
+
+    <section class="livro__sinopse">
+      <h2 class="sinopse__titulo">Sinopse</h2>
+      <div class="sinopse__content">
+        <p class="sinopse__paragraph">
+          {{ livro.sinopse }}
+        </p>
+      </div>
+    </section>
+
+  </article>
+{% endblock content %}

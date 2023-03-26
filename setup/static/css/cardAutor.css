@@ -3,8 +3,6 @@
   width: 288px;
   height: 116px;
 
-  cursor: pointer;
-
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: .5rem;
@@ -18,10 +16,6 @@
   transition: filter .3s;
 }
 
-.cardAutor:hover{
-  filter: brightness(.8);
-}
-
 .cardAutor__imgContainer{
   width: 100px;
   height: 100px;
@@ -32,6 +26,7 @@
   width: 100%;
   border-radius: .5rem;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .cardAutor__content{
@@ -40,9 +35,11 @@
   height: 100px;
 }
 
-.cardAutor__nome{
+.cardAutor__nome, .cardAutor__nome > *{
   font: var(--titleP);
   margin-bottom: .5rem;
+  color: var(--fundo);
+  cursor: pointer;
 }
 
 .cardAutor__descricao{

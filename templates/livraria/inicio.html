@@ -1,5 +1,5 @@
 
-{% extends 'components/base.html' %}
+{% extends 'partials/base.html' %}
 {% load static %}
 
 {% block styles %}
@@ -34,10 +34,10 @@
       {% for autor in autores %}
         <article class="cardAutor">
           <div class="cardAutor__imgContainer">
-            <img class="cardAutor__img" src="{{ autor.foto.url }}" alt="">
+            <a href="{% url 'autor' autor.id %}"><img class="cardAutor__img" src="{{ autor.foto.url }}" alt=""></a>
           </div>
           <section class="cardAutor__content">
-            <h3 class="cardAutor__nome"> {{ autor.nome }} </h3>
+            <h3 class="cardAutor__nome"> <a href="{% url 'autor' autor.id %}">{{ autor.nome }}</a> </h3>
             <p class="cardAutor__descricao">{{ autor.frase_destaque }}</p>
           </section>
         </article>
@@ -54,17 +54,16 @@
       {% for livro in livros %}
         <article class="bookCard">
           <div class="bookCard__imgContainer">
-            <img class="bookCard__img" src="{{ livro.capa.url }}" alt="">
+            <a href="{% url 'livro' livro.id %}"><img class="bookCard__img" src="{{ livro.capa.url }}" alt=""></a>
           </div>
           <section class="bookCard__content">
-            <h3 class="bookCard__titulo"> {{ livro.titulo }} </h3>
-            <a class="bookCard__autor" href="autor.html"> {{ livro.autor }} </a>
+            <h3 class="bookCard__titulo"> <a href="{% url 'livro' livro.id %}">{{ livro.titulo }} </a></h3>
+            <p class="bookCard__autor" href="#"><a href="{% url 'autor' livro.autor.id %}"> {{ livro.autor }} </a></p>
             <p class="bookCard__preco"> {{ livro.preco }} </p>
             <p class="bookCard__categorias">
               <a class="bookCard__categoria" href=""> {{ livro.genero_literario }} </a>
             </p>
           </section>
-          <i class="bookCard__saveIconContainer"><img class="bookCard__salveIcon" src="{% static 'icons/favorite.svg' %}" alt=""></i>
         </article>
       {% endfor %}
 

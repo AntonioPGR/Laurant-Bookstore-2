@@ -1,6 +1,9 @@
 from django.urls import path
-from livraria.views import inicio
+from livraria import views
 
 urlpatterns = [
-    path('', inicio)
+    path('', views.inicio, name='inicio'),
+    path('livro/<int:livro_id>', views.livro, name='livro'),
+    path('autor/<int:autor_id>', views.autor, name='autor'),
+    path('buscar', views.buscar, name='buscar')
 ]
