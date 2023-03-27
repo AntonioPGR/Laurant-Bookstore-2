@@ -7,12 +7,13 @@
     </div>
   </a>
   <form action="{% url 'buscar' %}" class="header__searchContainer">
-    <input class="search__input" type="text" name="search_query" placeholder="Procurando algo?">
+    <input autocomplete="off" class="search__input" type="text" name="search_query" placeholder="Buscando por livros?">
     <button type="submit" class="search__iconContainer"><img class="search__icon" src="{% static 'icons/search.svg' %}" alt="Buscar"></button>
   </form>
   <nav class="header__navmenu">
     <img class="navmenu__icon" src="{% static 'icons/cart.svg' %}" alt="Carrinho">
-    <img class="navmenu__icon" src="{% static 'icons/person.svg' %}" alt="Perfi
-    ">
+    <a href="{% url 'entrar' %}">
+      <img class="navmenu__icon" src="{% static 'icons/person.svg' %}" alt="Perfi">
+    </a>
   </nav>
 </header>

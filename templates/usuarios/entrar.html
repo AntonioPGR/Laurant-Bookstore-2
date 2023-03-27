@@ -1,0 +1,84 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/entrar.css' %}">
+{% endblock styles %}
+
+{% block content %}
+  <h1 class="entrar__title">Seja bem vindo a Lurant Livraria!</h1>
+  <section class="forms">
+
+    <form action="" class="forms__form forms__cadastro">
+      <div class="forms__titles">
+        <h2 class="forms__titulo">
+          Primeira vez por aqui?
+        </h2>
+        <p class="forms__descricao">
+          Crie sua conta e obtenha a experiência completa em nossa livraria
+        </p>
+      </div>
+
+      {% for field in cadastro %}
+        <div class="inputContainer">
+          <label class="forms__label" for="{{field.id_for_label}}" class="inputText">{{field.label}}</label>
+          {{field}}
+        </div>
+      {% endfor %}
+
+      <div class="cadastro__senha">
+        <div class="senha__requisitos">
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> Senhas devem ser iguais </span>
+          </p>
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> 8 ou mais caracteres </span>
+          </p>
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> 1 ou mais letras maiúsculas </span>
+          </p>
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> 1 ou mais letras minúsculas </span>
+          </p>
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> 1 ou mais caracteres especiais ( + - * / ...) </span>
+          </p>
+        </div>
+      </div>
+
+      <button class="botao livro__adicionarCarrinho">
+        criar conta
+      </button>
+    </form>
+
+    <div class="bar"></div>
+
+    <form action="" class="forms__form forms__login">
+      {% csrf_token %}
+      <div class="forms__titles">
+        <h2 class="forms__titulo">
+          Está de volta à livraria?
+        </h2>
+        <p class="forms__descricao">
+          Faça login em sua conta e continue explorando este incrivel mundo literário
+        </p>
+      </div>
+
+      {% for field in login %}
+        <div class="inputContainer">
+          <label class="forms__label" for="{{ field.id_for_label }}" class="inputText"> {{field.label}} </label>
+          {{ field }}
+        </div>
+      {% endfor %}
+      <button type="submit" class="botao livro__adicionarCarrinho">
+        entrar
+      </button>
+    </form>
+
+  </section>
+{% endblock %}
