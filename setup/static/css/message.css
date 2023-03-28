@@ -1,0 +1,25 @@
+.messages{
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 80vw;
+  max-width: 700px;
+  background-color: var(--fundoContrastado);
+  color: var(--texto);
+  border-radius: .3rem;
+  display: grid;
+  grid-template-columns: 1fr 20px;
+}
+
+.messages__closeContainer{
+  display: block;
+}
+
+.messages__close{
+  width: 20px;
+  height: 20px;
+}
+
+.messages__message{
+  font: var(--bodyG);
+  text-align: center;
+}

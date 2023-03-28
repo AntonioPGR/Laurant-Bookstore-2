@@ -14,15 +14,24 @@
   
   <link rel="stylesheet" href="{% static 'css/header.css' %}">
 
+  
+  {% if messages %}
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+  {% endif %}
+
   {% block styles %}
   {% endblock styles %}
 
 </head>
 <body>
-  
+
   <div class="container">
 
     {% include 'partials/header.html' %}
+
+    {% if messages %}
+      {% include 'partials/messages.html' %}
+    {% endif %}
 
     <main>
 

@@ -1,0 +1,65 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+{% endblock styles %}
+
+{% block content %}
+
+  <h1 class="page__title">Seja bem vindo a Lurant Livraria!</h1>
+  <section class="forms">
+
+    <div class="forms__titles">
+      <a class="forms__goback" href="{% url 'entrar' %}">
+        <img class="goback__image" src="{% static 'icons/downArrowWhite.svg' %}" alt="">
+      </a>
+      <h2 class="forms__titulo">
+        Crie sua conta
+      </h2>
+    </div>
+
+    <form autocomplete="off" action="{% url 'cadastrar' %}" method="POST" class="forms__form forms__cadastro">
+
+      {% csrf_token %}
+
+      {% for field in cadastro %}
+        <div class="inputContainer">
+          <label class="forms__label" for="{{field.id_for_label}}" class="inputText">{{field.label}}</label>
+          {{field}}
+        </div>
+      {% endfor %}
+
+      <div class="cadastro__senha">
+        <div class="senha__requisitos">
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> Senhas devem ser iguais </span>
+          </p>
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> 8 ou mais caracteres </span>
+          </p>
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> 1 ou mais letras maiúsculas </span>
+          </p>
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> 1 ou mais letras minúsculas </span>
+          </p>
+          <p class="requisitos__requisito">
+            <img class="requisitos__icon" alt="negative icon" src="{% static 'icons/close.svg' %}">
+            <span class="requisitos__texto"> 1 ou mais caracteres especiais ( + - * / ...) </span>
+          </p>
+        </div>
+      </div>
+
+      <button class="botao livro__adicionarCarrinho">
+        criar conta
+      </button>
+    </form>
+
+  </section>
+{% endblock %}

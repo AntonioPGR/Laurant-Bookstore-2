@@ -1,13 +1,12 @@
-.entrar__title{
-  font: var(--titleG);
-  text-align: center;
-  margin: 1.5rem 0;
-}
-
 .forms{
   display: grid;
   grid-template-columns: 1fr 3px 1fr;
+  align-items: center;
   gap: 2rem;
+}
+
+.entrar__titulo{
+  margin-bottom: .5rem;
 }
 
 .bar{
@@ -17,78 +16,5 @@
 
 .forms__cadastro, .forms__login{
   padding: 1rem 0;
-}
-
-.forms__titulo{
-  font: var(--titleM);
-  margin-bottom: .5rem;
-}
-
-.forms__descricao{
-  font: var(--bodyG);
-}
-
-.forms__label{
-  font: var(--bodyP);
-  display: block;
-  margin-bottom: .25rem;
-}
-
-.inputContainer{
-  width: 100%;
-}
-
-.forms__input{
-  box-sizing: border-box;
-  display: block;
-  background-color: var(--texto);
-  padding: 1rem;
-  font: var(--bodyM);
-  border-radius: 1.25rem;
-  width: 100%;
-}
-
-.forms__descricao, .forms__titulo, .entrar__title, .forms__label{
-  color: var(--texto);
-}
-
-.forms__form{
-  display: flex;
-  align-items: start;
-  justify-content: start;
-  flex-flow: column nowrap;
-  gap: 1rem;
-}
-
-.cadastro__userinfo{
-  display: grid;
-  grid-template-columns: 2.5fr 1fr;
-  gap: 1rem;
-}
-
-.cadastro__senha{
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 1rem;
-  width: 100%;
-}
-
-.requisitos__requisito{
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  width: 100%;
-  gap: .25rem;
-}
-
-.requisitos__texto{
-  color: var(--texto);
-  filter: opacity(.3);
-  font: var(--bodyP);
-}
-
-.requisitos__icon{
-  width: 14px;
-  height: 14px;
 }
 

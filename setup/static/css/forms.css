@@ -1,0 +1,46 @@
+.page__title{
+  font: var(--titleG);
+  text-align: center;
+  margin: 1.5rem 0;
+  color: var(--texto);
+}
+
+.forms__titulo{
+  font: var(--titleM);
+}
+
+.forms__descricao{
+  font: var(--bodyG);
+}
+
+.forms__label{
+  font: var(--bodyP);
+  display: block;
+  margin-bottom: .25rem;
+}
+
+.inputContainer{
+  width: 100%;
+}
+
+.forms__input{
+  box-sizing: border-box;
+  display: block;
+  background-color: var(--texto);
+  padding: 1rem;
+  font: var(--bodyM);
+  border-radius: 1.25rem;
+  width: 100%;
+}
+
+.forms__descricao, .forms__titulo, .entrar__title, .forms__label{
+  color: var(--texto);
+}
+
+.forms__form{
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}

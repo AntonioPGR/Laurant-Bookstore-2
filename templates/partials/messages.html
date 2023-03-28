@@ -1,0 +1,11 @@
+{% load static %}
+<div class="messages">
+  <div>
+    {% for message in messages %}
+      <p class="messages__message">{{message}}</p>
+    {% endfor %}
+  </div>
+  <div class="messages__closeContainer">
+    <img class="messages__close" src="{% static 'icons/close.svg' %}" alt="">
+  </div>
+</div>
