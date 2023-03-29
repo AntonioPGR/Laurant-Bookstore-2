@@ -12,8 +12,17 @@
   </form>
   <nav class="header__navmenu">
     <img class="navmenu__icon" src="{% static 'icons/cart.svg' %}" alt="Carrinho">
-    <a href="{% url 'entrar' %}">
+
+    {% if user.is_authenticated %}
       <img class="navmenu__icon" src="{% static 'icons/person.svg' %}" alt="Perfi">
-    </a>
+      <a href="{% url 'sair' %}">
+        <img class="navmenu__icon" src="{% static 'icons/logout.svg' %}" alt="Perfi">
+      </a>
+    {% else %}
+      <a href="{% url 'entrar' %}">
+        <img class="navmenu__icon" src="{% static 'icons/login.svg' %}" alt="Perfi">
+      </a>
+    {% endif %}
+    
   </nav>
 </header>

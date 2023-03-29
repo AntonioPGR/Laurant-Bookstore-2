@@ -1,0 +1,16 @@
+.search__configs{
+  margin-bottom: 1rem;
+}
+
+.configs__searchQuery{
+  font: var(--titleM);
+  color: var(--texto);
+}
+
+.search__results{
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}

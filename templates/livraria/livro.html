@@ -27,9 +27,17 @@
         <div class="livro__info">
           <p class="livro__preco">R$ {{ livro.preco }}</p>
           <p class="livro__parcelar">Em até 10x sem juros!</p>
-          <button class="botao livro__adicionarCarrinho">
-            pôr no carrinho
-          </button>
+          {% if user.is_authenticated %}
+            <button class="botao livro__adicionarCarrinho">
+              pôr no carrinho
+            </button>
+          {% else %}
+            <a href=" {% url 'entrar' %}">
+              <button class="botao livro__adicionarCarrinho">
+                pôr no carrinho
+              </button>
+            </a>
+          {% endif %}
         </div>
 
       </section>

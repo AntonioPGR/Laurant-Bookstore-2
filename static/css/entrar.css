@@ -1,0 +1,20 @@
+.forms{
+  display: grid;
+  grid-template-columns: 1fr 3px 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.entrar__titulo{
+  margin-bottom: .5rem;
+}
+
+.bar{
+  height: 100%;
+  background-color: var(--texto);
+}
+
+.forms__cadastro, .forms__login{
+  padding: 1rem 0;
+}
+

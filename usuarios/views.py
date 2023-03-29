@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from usuarios import forms
 from usuarios.utils import cadastrar_usuario, logar_usuario, sair_usuario
 
 def cadastrar(request):
 
+  if request.user.is_authenticated:
+    return redirect('inicio')
+  
   cadastro_form = forms.CadastroForm()
   
   if request.method == 'POST' and request.POST:
@@ -16,6 +19,9 @@ def cadastrar(request):
 
 
 def entrar(request):
+  
+  if request.user.is_authenticated:
+    return redirect('inicio')
 
   login_form = forms.LoginForm()
   if request.method == 'POST' and request.POST:
@@ -29,4 +35,7 @@ def entrar(request):
 
 
 def sair(request):
+  if not request.user.is_authenticated:
+    return redirect('inicio')
+  
   return sair_usuario(request)

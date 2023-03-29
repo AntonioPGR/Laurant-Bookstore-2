@@ -18,6 +18,7 @@ class LoginForm(forms.Form):
     })
   )
   
+  
 class CadastroForm(forms.Form):
   email = forms.EmailField(
     max_length=100,
@@ -37,15 +38,6 @@ class CadastroForm(forms.Form):
       "placeholder": "Ex.: Jóse Dávila",
     })
   )
-  # nascimento = forms.DateField(
-  #   required=True,
-  #   label="Data de nascimento",
-  #   widget=forms.DateInput({
-  #     "class": 'forms__input',
-  #     "placeholder": "dd/mm/yyyy",
-  #     "type": "date",
-  #   })
-  # )
   senha = forms.CharField(
     max_length=70,
     required=True,
@@ -67,3 +59,17 @@ class CadastroForm(forms.Form):
     })
   )
   
+  
+  def clean_nome_de_usuario(self):
+    self.add_error('nome_de_usuario', 'ERRO CARALHO')
+    
+  # def clean_senha2(self):
+  #   senha : str = self.cleaned_data.get("senha")
+  #   senha2 : str = self.cleaned_data.get("senha2")
+    
+  #   if not senha2:
+  #     raise forms.ValidationError("O campo 'senha' não pode ficar vazio !")
+  #   if senha2 != senha:
+  #     raise forms.ValidationError("As senhas devem ser iguais!")
+    
+  #   return senha2

@@ -28,6 +28,9 @@
         <div class="inputContainer">
           <label class="forms__label" for="{{field.id_for_label}}" class="inputText">{{field.label}}</label>
           {{field}}
+          {% for error in field.errors %}
+            <p class="forms__error">aaa</p>
+          {% endfor %}
         </div>
       {% endfor %}
 

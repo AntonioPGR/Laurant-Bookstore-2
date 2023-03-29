@@ -44,8 +44,3 @@
   flex-flow: column nowrap;
   gap: 1rem;
 }
-
-.forms__error{
-  font: var(--bodyP);
-  color: var(--errors );
-}

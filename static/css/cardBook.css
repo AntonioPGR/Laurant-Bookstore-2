@@ -3,10 +3,8 @@
   width: 392px;
   height: 161px;
 
-  cursor: pointer;
-
   display: grid;
-  grid-template-columns: 95px 1fr 20px;
+  grid-template-columns: 95px 1fr;
   gap: 1rem;
   align-items: center;
   justify-content: center;
@@ -15,17 +13,26 @@
   padding: .5rem 1rem;
   border-radius: 1.25rem;
 
-  transition: filter .3s;
 }
 
-.bookCard:hover{
-  filter: brightness(.8);
+.bookCard__imgContainer{
+  height: 148px;
 }
+
+.bookCard__img{
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
 
 .bookCard__content{
   display: flex;
   flex-flow: column nowrap;
   gap: .25rem;
+  align-items: start;
+  justify-content: start;
+  height: 100%;
 }
 
 .bookCard__content *{
@@ -36,10 +43,12 @@
   font: var(--titleP);
   max-height: 62px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .bookCard__autor{
   font: var(--bodyMLinks);
+  text-decoration: underline;
   max-height: 16px;
   overflow: hidden;
 }

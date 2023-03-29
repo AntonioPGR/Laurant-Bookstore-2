@@ -13,11 +13,21 @@
 
     <div class="hero__content">
       <h2 class="content__subtitle" >Olá!</h2>
-      <h1 class="content__title" >Seja bem vindo a Laurant</h1>
-      <p class="content__paragraph">
-        Entre com sua conta e busque pelos melhores livros e autores do mercado, com os menores preços e a maior facilidade na hora de comprar
-      </p>
-      <a href="{% url 'entrar'%}"><button class="content__button">registre-se já</button></a>
+
+      {% if user.is_authenticated %}
+        <h1 class="content__title" >Bem vindo de volta {{user.username}} </h1>
+        <p class="content__paragraph">
+          Fique a vontade para explorar a melhor plataforma de compra de livros online! Caso já tenha feito isso, que tal olhar seu carrinho e ver se tem obras a mais para adicionar a estante?
+        </p>
+        <a href="{% url 'entrar'%}"><button class="content__button">Ver carrinho</button></a>
+      {% else %}
+        <h1 class="content__title" >Seja bem vindo a Laurant</h1>
+        <p class="content__paragraph">
+          Entre com sua conta e busque pelos melhores livros e autores do mercado, com os menores preços e a maior facilidade na hora de comprar
+        </p>
+        <a href="{% url 'entrar'%}"><button class="content__button">registre-se já</button></a>
+      {% endif %}
+
     </div>
 
     <div class="hero__slides">
@@ -29,44 +39,12 @@
   <section class="mainSec">
     <h2 class="mainSec__title">Nomes ao redor do mundo!</h2>
     <p class="mainSec__subtitle">veja os principais autores da semana que se destacaram em nossa plataforam</p>
-    <div class="cardContainer">
-      
-      {% for autor in autores %}
-        <article class="cardAutor">
-          <div class="cardAutor__imgContainer">
-            <a href="{% url 'autor' autor.id %}"><img class="cardAutor__img" src="{{ autor.foto.url }}" alt=""></a>
-          </div>
-          <section class="cardAutor__content">
-            <h3 class="cardAutor__nome"> <a href="{% url 'autor' autor.id %}">{{ autor.nome }}</a> </h3>
-            <p class="cardAutor__descricao">{{ autor.frase_destaque }}</p>
-          </section>
-        </article>
-      {% endfor %}
-
-    </div>
+    {% include 'partials/autores_cards.html' %}
   </section>
 
   <section class="mainSec">
     <h2 class="mainSec__title">Biblioteca Semanal</h2>
     <p class="mainSec__subtitle">Todo conteúdo literário que o mundo inteiro mais apreciou na ultima semana</p>
-    <div class="cardContainer">
-      
-      {% for livro in livros %}
-        <article class="bookCard">
-          <div class="bookCard__imgContainer">
-            <a href="{% url 'livro' livro.id %}"><img class="bookCard__img" src="{{ livro.capa.url }}" alt=""></a>
-          </div>
-          <section class="bookCard__content">
-            <h3 class="bookCard__titulo"> <a href="{% url 'livro' livro.id %}">{{ livro.titulo }} </a></h3>
-            <p class="bookCard__autor" href="#"><a href="{% url 'autor' livro.autor.id %}"> {{ livro.autor }} </a></p>
-            <p class="bookCard__preco"> {{ livro.preco }} </p>
-            <p class="bookCard__categorias">
-              <a class="bookCard__categoria" href=""> {{ livro.genero_literario }} </a>
-            </p>
-          </section>
-        </article>
-      {% endfor %}
-
-    </div>
+    {% include 'partials/livros_cards.html' %}
   </section>
 {% endblock content %}

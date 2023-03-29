@@ -6,13 +6,12 @@
   --font: 'Libre Caslon Text', serif;
   --bodyP: 0.8125rem var(--font);
   --bodyM: 1rem var(--font);
-  --bodyMLinks: underline 1rem var(--font);
   --bodyG: 1.25rem var(--font);
   --botao: 1.25rem var(--font);
   --titleP: 1.5625rem  var(--font);
   --titleM: 1.9375rem var(--font);
   --titleG: 2.4375rem var(--font);
-  --headlineP: 30625rem var(--font);
+  --headlineP: 3.0625rem var(--font);
 
   /* CORES */
   --fundo: #403022;
@@ -38,4 +37,29 @@ html, body{
   max-width: 1226px;
   padding: 0 24px;
   margin: auto;
+}
+
+/* DEFAULTS */
+
+.botao{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 4rem;
+  font: var(--botao);
+  text-transform: uppercase;
+  color: var(--texto);
+  background: var(--acoes);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: box-shadow, filter 300ms;
+}
+
+.botao:hover{
+
+  box-shadow: 1px 1px 10px rgba(0,0,0,.4);
+  filter: brightness(.9);
+  
+
 }

@@ -1,0 +1,16 @@
+{% load static %}
+<div class="cardContainer">
+      
+  {% for autor in autores %}
+    <article class="cardAutor">
+      <div class="cardAutor__imgContainer">
+        <a href="{% url 'autor' autor.id %}"><img class="cardAutor__img" src="{{ autor.foto.url }}" alt=""></a>
+      </div>
+      <section class="cardAutor__content">
+        <h3 class="cardAutor__nome"> <a href="{% url 'autor' autor.id %}">{{ autor.nome }}</a> </h3>
+        <p class="cardAutor__descricao">{{ autor.frase_destaque }}</p>
+      </section>
+    </article>
+  {% endfor %}
+
+</div>

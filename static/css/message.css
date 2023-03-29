@@ -1,8 +1,5 @@
 .messages{
-  position: fixed;
-  bottom: 20vh;
-  left: 50vw;
-  transform: translate(-50%, 0);
+  display: grid;
   margin: 2rem auto;
   padding: 1rem;
   width: 80vw;
@@ -10,7 +7,6 @@
   background-color: var(--fundoContrastado);
   color: var(--texto);
   border-radius: .3rem;
-  display: grid;
   grid-template-columns: 1fr 20px;
 }
 
