@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from os.path import join
 from livraria.models import Autor, Livro
 
@@ -15,22 +15,39 @@ def inicio(request):
   
 def livro(request, livro_id):
   livro = get_object_or_404(Livro, pk=livro_id)
+  
+  livros = Livro.objects.filter(genero_literario=livro.genero_literario)
+  
   return render(request, join(BASE_PATH, 'livro.html'), {
-    "livro": livro
+    "livro": livro,
+    "livros": livros
   })
 
 
 def autor(request, autor_id):
   autor = get_object_or_404(Autor, pk=autor_id)
+  livros = Livro.objects.filter(autor=autor.pk)
   return render(request, join(BASE_PATH, 'autor.html'), {
-    "autor": autor
+    "autor": autor,
+    "livros": livros
   })
   
-def buscar(request):
-  livros = Livro.objects.order_by("genero_literario")
+  
+def buscar(request, type):
+  autores = ''
+  livros = ''
+  
+  if type == 'autores':
+    autores = Autor.objects.order_by("genero_literario")
+  elif type == 'livros':
+    livros = Livro.objects.order_by("genero_literario")
+  else:
+    return redirect('buscar', type='livros')
+    
   search_query = ''
   if 'search_query' in request.GET:
     search_query = request.GET["search_query"]
-    if search_query:
+    if search_query and livros:
       livros = livros.filter(titulo__icontains=search_query)
-  return render(request, join(BASE_PATH, 'pesquisa.html'), {"livros":livros, "searchQuery":search_query})
+      
+  return render(request, join(BASE_PATH, 'pesquisa.html'), {"autores":autores, "livros":livros, "searchQuery":search_query})

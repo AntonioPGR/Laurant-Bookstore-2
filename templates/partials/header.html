@@ -6,7 +6,7 @@
       <img class="header__logo" src="{% static 'images/logoLaurant.svg' %}" alt="Biblioteca e Livraria virtual laurant">
     </div>
   </a>
-  <form action="{% url 'buscar' %}" class="header__searchContainer">
+  <form action="{% url 'buscar' type='livros' %}" class="header__searchContainer">
     <input autocomplete="off" class="search__input" type="text" name="search_query" placeholder="Buscando por livros?">
     <button type="submit" class="search__iconContainer"><img class="search__icon" src="{% static 'icons/search.svg' %}" alt="Buscar"></button>
   </form>

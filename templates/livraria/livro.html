@@ -4,6 +4,7 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/livro.css' %}">
+<link rel="stylesheet" href="{% static 'css/cardBook.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -44,13 +45,22 @@
     </section>
 
     <section class="livro__sinopse">
-      <h2 class="sinopse__titulo">Sinopse</h2>
+      <h2 class="content__titulo">Sinopse</h2>
       <div class="sinopse__content">
         <p class="sinopse__paragraph">
           {{ livro.sinopse }}
         </p>
       </div>
     </section>
+
+    
+    {% if livros %}  
+      <section class="livrosSimilares">
+        <h2 class="content__titulo">Livros similares</h2>
+        {% include 'partials/livros_cards.html' %}
+      </section>
+    {% endif %}
+      
 
   </article>
 {% endblock content %}

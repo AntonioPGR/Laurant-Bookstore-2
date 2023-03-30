@@ -4,6 +4,7 @@
 
 {% block styles %}
   <link rel="stylesheet" href="{% static 'css/autor.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cardBook.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -17,4 +18,11 @@
         <p class="autor__biografia">{{ autor.biografia }}</p>
     </section>
   </article>
+
+  {% if livros %}  
+    <section class="livros__autor">
+      <h2 class="content__titulo">Livros do autor</h2>
+      {% include 'partials/livros_cards.html' %}
+    </section>
+  {% endif %}
 {% endblock content %}  

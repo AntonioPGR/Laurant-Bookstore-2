@@ -40,3 +40,13 @@
   padding: 1.5rem;
   color: var(--texto);
 }
+
+.content__titulo{
+  font: var(--titleM);
+  margin-bottom: 1rem;
+  color: var(--texto);
+}
+
+.livros__autor{
+  margin: 2rem 0;
+}

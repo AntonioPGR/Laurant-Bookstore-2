@@ -1,3 +1,9 @@
+.books__container{
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1.5rem;
+}
+
 .bookCard{
   box-sizing: border-box;
   width: 392px;

@@ -77,13 +77,18 @@
   color: var(--texto);
 }
 
-.sinopse__titulo{
+.content__titulo{
   font: var(--titleM);
   margin-bottom: 1rem;
+  color: var(--texto);
 }
 
 .sinopse__paragraph{
   font: var(--bodyM);
   text-indent: 1rem;
   margin-bottom: .5rem;
+}
+
+.livrosSimilares{
+  margin: 2rem 0;
 }

@@ -1,3 +1,9 @@
+.autores__container{
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1.5rem;
+}
+
 .cardAutor{
   box-sizing: border-box;
   width: 288px;
