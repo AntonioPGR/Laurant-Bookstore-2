@@ -5,32 +5,26 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 def cadastrar_usuario(request, respostas_form:CadastroForm):
-  if not respostas_form.is_valid():
-    messages.error(request, " Formulário invalido!!")
-    return redirect('cadastrar')
-
-  if respostas_form['senha'].value() != respostas_form['senha2'].value():
-    messages.error(request, " As senhas devem ser iguais!!")
-    return redirect('cadastrar')
-  
-  nome = respostas_form['nome_de_usuario'].value()
-  email = respostas_form['email'].value()
-  # nascimento = respostas_form['nascimento'].value()
-  senha = respostas_form['senha'].value()
-  
-  if User.objects.filter(email=email).exists():
-    messages.error(request, " Já existe um usuário cadastrado com esse email!!")
-    return redirect('cadastrar')
-  
-  if User.objects.filter(username=nome).exists():
-    messages.error(request, " Já existe um usuário cadastrado com esse nome!!")
-    return redirect('cadastrar')
-  
-  usuario = User.objects.create_user(password=senha, username=nome, email=email)
-  usuario.save()
-  
-  messages.success(request, f"Olá {nome}, seu cadastro foi efetuado com sucesso!")
-  return redirect('entrar')
+  if respostas_form.is_valid():
+    
+    nome = respostas_form['nome_de_usuario'].value()
+    email = respostas_form['email'].value()
+    # nascimento = respostas_form['nascimento'].value()
+    senha = respostas_form['senha'].value()
+    
+    if User.objects.filter(email=email).exists():
+      messages.error(request, " Já existe um usuário cadastrado com esse email!!")
+      return redirect('cadastrar')
+    
+    if User.objects.filter(username=nome).exists():
+      messages.error(request, " Já existe um usuário cadastrado com esse nome!!")
+      return redirect('cadastrar')
+    
+    usuario = User.objects.create_user(password=senha, username=nome, email=email)
+    usuario.save()
+    
+    messages.success(request, f"Olá {nome}, seu cadastro foi efetuado com sucesso!")
+    return redirect('entrar')
 
 
 def logar_usuario(request, respostas_form:LoginForm):

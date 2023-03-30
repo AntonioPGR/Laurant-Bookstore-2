@@ -11,7 +11,8 @@ def cadastrar(request):
   
   if request.method == 'POST' and request.POST:
     respostas_form = forms.CadastroForm(request.POST)
-    return cadastrar_usuario(request, respostas_form)
+    cadastro_result = cadastrar_usuario(request, respostas_form)
+    if cadastro_result: return cadastro_result
   
   return render(request, 'usuarios/cadastrar.html', {
     "cadastro": cadastro_form,

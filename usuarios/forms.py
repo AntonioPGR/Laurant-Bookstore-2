@@ -60,16 +60,12 @@ class CadastroForm(forms.Form):
   )
   
   
-  def clean_nome_de_usuario(self):
-    self.add_error('nome_de_usuario', 'ERRO CARALHO')
-    
-  # def clean_senha2(self):
-  #   senha : str = self.cleaned_data.get("senha")
-  #   senha2 : str = self.cleaned_data.get("senha2")
-    
-  #   if not senha2:
-  #     raise forms.ValidationError("O campo 'senha' não pode ficar vazio !")
-  #   if senha2 != senha:
-  #     raise forms.ValidationError("As senhas devem ser iguais!")
-    
-  #   return senha2
+  def clean_senha2(self):
+    senha = self.cleaned_data.get('senha')
+    senha2 = self.cleaned_data.get('senha2')
+
+    if senha and senha2:
+        if senha != senha2:
+            raise forms.ValidationError('Senhas não são iguais')
+        else:
+            return senha2
