@@ -45,7 +45,13 @@
   gap: 1rem;
 }
 
+.forms__error::before{
+  content: "*";
+  display: inline-block;
+}
+
 .forms__error{
+  margin-top: .3rem;
   font: var(--bodyP);
-  color: var(--errors );
+  color: var(--errors);
 }

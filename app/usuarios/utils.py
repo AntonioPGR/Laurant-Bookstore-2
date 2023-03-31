@@ -1,24 +1,14 @@
-from usuarios.forms import CadastroForm, LoginForm
+from app.usuarios.forms import CadastroForm, LoginForm
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 def cadastrar_usuario(request, respostas_form:CadastroForm):
-  if respostas_form.is_valid():
-    
     nome = respostas_form['nome_de_usuario'].value()
     email = respostas_form['email'].value()
     # nascimento = respostas_form['nascimento'].value()
     senha = respostas_form['senha'].value()
-    
-    if User.objects.filter(email=email).exists():
-      messages.error(request, " Já existe um usuário cadastrado com esse email!!")
-      return redirect('cadastrar')
-    
-    if User.objects.filter(username=nome).exists():
-      messages.error(request, " Já existe um usuário cadastrado com esse nome!!")
-      return redirect('cadastrar')
     
     usuario = User.objects.create_user(password=senha, username=nome, email=email)
     usuario.save()
@@ -28,10 +18,6 @@ def cadastrar_usuario(request, respostas_form:CadastroForm):
 
 
 def logar_usuario(request, respostas_form:LoginForm):
-  if not respostas_form.is_valid():
-    messages.error(request, " Formulário invalido!!")
-    return redirect("entrar")
-    
   username = respostas_form['username'].value()
   senha = respostas_form['senha'].value()
   usuario = authenticate(

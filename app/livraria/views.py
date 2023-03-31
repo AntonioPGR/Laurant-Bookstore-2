@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from os.path import join
-from livraria.models import Autor, Livro
+from app.livraria.models import Autor, Livro
 
 BASE_PATH = 'livraria/'
 
@@ -16,7 +16,7 @@ def inicio(request):
 def livro(request, livro_id):
   livro = get_object_or_404(Livro, pk=livro_id)
   
-  livros = Livro.objects.filter(genero_literario=livro.genero_literario)
+  livros = Livro.objects.filter(genero_literario=livro.genero_literario).exclude(pk=livro.id)
   
   return render(request, join(BASE_PATH, 'livro.html'), {
     "livro": livro,

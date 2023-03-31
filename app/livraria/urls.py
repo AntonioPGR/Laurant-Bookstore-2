@@ -1,5 +1,5 @@
 from django.urls import path
-from livraria import views
+from app.livraria import views
 
 urlpatterns = [
     path('', views.inicio, name='inicio'),

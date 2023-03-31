@@ -39,13 +39,13 @@ class Migration(migrations.Migration):
                 ('preco', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('desconto', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
                 ('sinopse', models.TextField(max_length=1000)),
-                ('autor', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='livraria.autor')),
-                ('genero_literario', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='livraria.generoliterario')),
+                ('autor', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='app.livraria.autor')),
+                ('genero_literario', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app.livraria.generoliterario')),
             ],
         ),
         migrations.AddField(
             model_name='autor',
             name='genero_literario',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='livraria.generoliterario'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app.livraria.generoliterario'),
         ),
     ]

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from livraria.models import GeneroLiterario, Autor, Livro
+from app.livraria.models import GeneroLiterario, Autor, Livro
 
 
 class ListarGenero(admin.ModelAdmin): 
