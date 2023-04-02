@@ -8,6 +8,15 @@
 {% endblock styles %}
 
 {% block content %}
+  
+  {% if user.is_authenticated %}
+    <section class="editar">
+      <a href="{% url 'editar-item' item_label='livro' item_id=livro.id %}">
+        <img class="editar__img" src="{% static 'icons/edit.svg' %}" alt="">
+      </a>
+    </section>
+  {% endif %}
+    
   <article class="livro">
     <section class="livro__compra">
       <div class="livro__imageContainer">

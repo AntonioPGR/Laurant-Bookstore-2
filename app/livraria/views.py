@@ -56,30 +56,48 @@ def buscar(request, type):
   return render(request, join(BASE_PATH, 'pesquisa.html'), {"autores":autores, "livros":livros, "searchQuery":search_query})
 
 
-def novo_item(request, item):
+def novo_item(request, item_label):
   if not request.user.is_authenticated:
-    messages.error(request, f"Faça login para poder adicionar {item} a plataforma")
+    messages.error(request, f"Faça login para poder adicionar {item_label} a plataforma")
     return redirect('inicio')
   
-  if item == 'livro':
+  if item_label == 'livro':
     form = LivroForm
-  elif item == 'autor':
+  elif item_label == 'autor':
     form = AutorForm
-  elif item == 'genero':
+  elif item_label == 'genero':
     form = GeneroLiterarioForm
   else:
-    messages.error(request, f"Essa página de cadastro não existe! {item}")
+    messages.error(request, f"Essa página de cadastro não existe! {item_label}")
     return redirect('inicio') 
   
   if request.method == 'POST' and request.POST:
     form = form(request.POST, request.FILES)
     if form.is_valid():
       form.save()
-      messages.success(request, f"Seu novo {item} foi cadastrado com sucesso!")
+      messages.success(request, f"Seu novo {item_label} foi cadastrado com sucesso!")
       return redirect('inicio')
   
-  return render(request, join(BASE_PATH, 'novo_livro.html'), {
+  return render(request, join(BASE_PATH, 'novo_item.html'), {
     "form": form,
-    "item": item
+    "item": item_label
   })  
+  
+  
+def editar_item(request, item_label, item_id):
+  livro = Livro.objects.filter(id=item_id)[0]
+  form = LivroForm(instance=livro)
+  
+  if request.method == 'POST' and request.POST:
+    form = LivroForm(request.POST, request.FILES, instance=livro)
+    if form.is_valid():
+      form.save()
+      messages.success(request, f"Seu novo {item_label} foi editado com sucesso!")
+      return redirect('livro', livro_id=item_id)
+  
+  return render(request, join(BASE_PATH, 'editar_item.html'), {
+    'form': form,
+    'livro': livro,
+    'item': item_label
+  })
   

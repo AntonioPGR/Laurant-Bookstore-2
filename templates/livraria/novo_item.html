@@ -18,7 +18,7 @@
       </h2>
     </div>
 
-    <form autocomplete="off" action="{% url 'novo-item' item=item %}" method="POST" class="forms__form forms__cadastro" enctype="multipart/form-data"  >
+    <form autocomplete="off" action="{% url 'novo-item' item_label=item %}" method="POST" class="forms__form forms__cadastro" enctype="multipart/form-data"  >
 
       {% csrf_token %}
 

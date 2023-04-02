@@ -18,13 +18,13 @@
       <a href="{% url 'sair' %}">
         <img class="navmenu__icon" src="{% static 'icons/logout.svg' %}" alt="Perfi">
       </a>
-      <a href="{% url 'novo-item' item='livro' %}">
+      <a href="{% url 'novo-item' item_label='livro' %}">
         <img class="navmenu__icon" src="{% static 'icons/book.svg' %}" alt="Perfi">
       </a>
-      <a href="{% url 'novo-item' item='autor' %}">
+      <a href="{% url 'novo-item' item_label='autor' %}">
         <img class="navmenu__icon" src="{% static 'icons/writer.svg' %}" alt="Perfi">
       </a>
-      <a href="{% url 'novo-item' item='genero' %}">
+      <a href="{% url 'novo-item' item_label='genero' %}">
         <img class="navmenu__icon" src="{% static 'icons/gener.svg' %}" alt="Perfi">
       </a>
     {% else %}
