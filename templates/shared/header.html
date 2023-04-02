@@ -11,12 +11,21 @@
     <button type="submit" class="search__iconContainer"><img class="search__icon" src="{% static 'icons/search.svg' %}" alt="Buscar"></button>
   </form>
   <nav class="header__navmenu">
-    <img class="navmenu__icon" src="{% static 'icons/cart.svg' %}" alt="Carrinho">
-
+    
     {% if user.is_authenticated %}
-      <img class="navmenu__icon" src="{% static 'icons/person.svg' %}" alt="Perfi">
+      {% comment %} <img class="navmenu__icon" src="{% static 'icons/person.svg' %}" alt="Perfi"> {% endcomment %}
+      {% comment %} <img class="navmenu__icon" src="{% static 'icons/cart.svg' %}" alt="Carrinho"> {% endcomment %}
       <a href="{% url 'sair' %}">
         <img class="navmenu__icon" src="{% static 'icons/logout.svg' %}" alt="Perfi">
+      </a>
+      <a href="{% url 'novo-item' item='livro' %}">
+        <img class="navmenu__icon" src="{% static 'icons/book.svg' %}" alt="Perfi">
+      </a>
+      <a href="{% url 'novo-item' item='autor' %}">
+        <img class="navmenu__icon" src="{% static 'icons/writer.svg' %}" alt="Perfi">
+      </a>
+      <a href="{% url 'novo-item' item='genero' %}">
+        <img class="navmenu__icon" src="{% static 'icons/gener.svg' %}" alt="Perfi">
       </a>
     {% else %}
       <a href="{% url 'entrar' %}">

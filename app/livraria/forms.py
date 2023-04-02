@@ -1,5 +1,5 @@
 from django import forms
-from app.livraria.models import Livro, Autor
+from app.livraria.models import Livro, Autor, GeneroLiterario
 
 class LivroForm(forms.ModelForm):
   class Meta:
@@ -49,5 +49,14 @@ class AutorForm(forms.ModelForm):
       'biografia': forms.Textarea(attrs={'class': 'forms__input'}),
       'genero_literario': forms.Select(attrs={'class': 'forms__input'}),
       'frase_destaque': forms.TextInput(attrs={'class': 'forms__input'})
+    }
+  
+
+class GeneroLiterarioForm(forms.ModelForm):
+  class Meta:
+    model = GeneroLiterario
+    exclude = []
+    widgets = {
+      'nome': forms.TextInput(attrs={'class': 'forms__input'}),
     }
   

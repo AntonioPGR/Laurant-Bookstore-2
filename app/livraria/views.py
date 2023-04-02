@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from os.path import join
 from app.livraria.models import Autor, Livro
-from app.livraria.forms import LivroForm, AutorForm
+from app.livraria.forms import LivroForm, AutorForm, GeneroLiterarioForm
 from django.contrib import messages
 
 BASE_PATH = 'livraria/'
@@ -58,13 +58,15 @@ def buscar(request, type):
 
 def novo_item(request, item):
   if not request.user.is_authenticated:
-    messages.error(request, "Faça login para poder adicionar livros a plataforma")
+    messages.error(request, f"Faça login para poder adicionar {item} a plataforma")
     return redirect('inicio')
   
   if item == 'livro':
     form = LivroForm
   elif item == 'autor':
     form = AutorForm
+  elif item == 'genero':
+    form = GeneroLiterarioForm
   else:
     messages.error(request, f"Essa página de cadastro não existe! {item}")
     return redirect('inicio') 
