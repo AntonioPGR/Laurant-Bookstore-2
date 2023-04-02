@@ -22,10 +22,7 @@ class LoginForm(forms.Form):
   
   def clean_senha(self):
     senha = self.cleaned_data.get("senha")
-    nome = self.cleaned_data.get("username")
     if senha:
-      if not User.objects.filter(username=nome, password=senha):
-        raise forms.ValidationError('Senha e/ou usuario incorretos')
       return senha
     
     raise forms.ValidationError('O campo "senha" não pode ficar vazio')

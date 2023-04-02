@@ -23,7 +23,7 @@ def logar_usuario(request, respostas_form:LoginForm):
   usuario = authenticate(
     request,
     username=username,
-    password=senha
+    password=senha  
   )
   
   if usuario is None:

@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from os.path import join
 from app.livraria.models import Autor, Livro
+from app.livraria.forms import LivroForm, AutorForm
+from django.contrib import messages
 
 BASE_PATH = 'livraria/'
 
@@ -34,6 +36,7 @@ def autor(request, autor_id):
   
   
 def buscar(request, type):
+  
   autores = ''
   livros = ''
   
@@ -51,3 +54,30 @@ def buscar(request, type):
       livros = livros.filter(titulo__icontains=search_query)
       
   return render(request, join(BASE_PATH, 'pesquisa.html'), {"autores":autores, "livros":livros, "searchQuery":search_query})
+
+
+def novo_item(request, item):
+  if not request.user.is_authenticated:
+    messages.error(request, "Faça login para poder adicionar livros a plataforma")
+    return redirect('inicio')
+  
+  if item == 'livro':
+    form = LivroForm
+  elif item == 'autor':
+    form = AutorForm
+  else:
+    messages.error(request, f"Essa página de cadastro não existe! {item}")
+    return redirect('inicio') 
+  
+  if request.method == 'POST' and request.POST:
+    form = form(request.POST, request.FILES)
+    if form.is_valid():
+      form.save()
+      messages.success(request, f"Seu novo {item} foi cadastrado com sucesso!")
+      return redirect('inicio')
+  
+  return render(request, join(BASE_PATH, 'novo_livro.html'), {
+    "form": form,
+    "item": item
+  })  
+  
