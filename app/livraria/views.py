@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from os.path import join
 from app.livraria.models import Autor, Livro
-from app.livraria.forms import LivroForm, AutorForm, GeneroLiterarioForm
+from app.livraria.forms import LivroForm
 from django.contrib import messages
+from app.livraria.utils import definir_item, encontrar_item, filtrar_resultados
 
 BASE_PATH = 'livraria/'
 
@@ -35,25 +36,26 @@ def autor(request, autor_id):
   })
   
   
-def buscar(request, type):
+def buscar_livros(request):
   
-  autores = ''
-  livros = ''
+  resultado_completo = Livro.objects
+  resultado_filtrado = resultado_completo
   
-  if type == 'autores':
-    autores = Autor.objects.order_by("genero_literario")
-  elif type == 'livros':
-    livros = Livro.objects.order_by("genero_literario")
-  else:
-    return redirect('buscar', type='livros')
+  search_query = request.GET['search_query']
+  if search_query:
+    resultado_filtrado = resultado_filtrado.filter(titulo__contains=search_query)
+    if len(resultado_filtrado) == 0:
+      resultado_filtrado = resultado_filtrado.filter(autor__nome__contains=search_query)
     
-  search_query = ''
-  if 'search_query' in request.GET:
-    search_query = request.GET["search_query"]
-    if search_query and livros:
-      livros = livros.filter(titulo__icontains=search_query)
+  # genero_literario = request.GET['genero_literario']
+  # if request.GET['genero_literario']:
+  #   resultado_filtrado = resultado_filtrado.filter(genero_literario__id=genero_literario.id)
       
-  return render(request, join(BASE_PATH, 'pesquisa.html'), {"autores":autores, "livros":livros, "searchQuery":search_query})
+  return render(request, join(BASE_PATH, 'pesquisa.html'), {
+    "livros": resultado_filtrado,
+    "pesquisa": search_query,
+    # "genero_literario": genero_literario
+  })
 
 
 def novo_item(request, item_label):
@@ -61,18 +63,16 @@ def novo_item(request, item_label):
     messages.error(request, f"Faça login para poder adicionar {item_label} a plataforma")
     return redirect('inicio')
   
-  if item_label == 'livro':
-    form = LivroForm
-  elif item_label == 'autor':
-    form = AutorForm
-  elif item_label == 'genero':
-    form = GeneroLiterarioForm
-  else:
+  response = definir_item(item_label)
+  
+  if not response:
     messages.error(request, f"Essa página de cadastro não existe! {item_label}")
-    return redirect('inicio') 
+    return redirect('inicio')
+  
+  form = response['form']
   
   if request.method == 'POST' and request.POST:
-    form = form(request.POST, request.FILES)
+    form = response.form(request.POST, request.FILES)
     if form.is_valid():
       form.save()
       messages.success(request, f"Seu novo {item_label} foi cadastrado com sucesso!")
@@ -85,19 +85,52 @@ def novo_item(request, item_label):
   
   
 def editar_item(request, item_label, item_id):
-  livro = Livro.objects.filter(id=item_id)[0]
-  form = LivroForm(instance=livro)
+  # verificar autenticação
+  if not request.user.is_authenticated:
+    messages.error(request, f"Faça login para poder deletar {item_label} a plataforma")
+    return redirect('inicio')
   
+  # definir o tipo do item e a qual classe pertence
+  response = definir_item(item_label)
+  if not response:
+    messages.error(request, f"Essa página de cadastro não existe! {item_label}")
+    return redirect('inicio')
+  
+  # definir o item especificamente
+  item = encontrar_item(response['classe_pertencente'], item_id)
+  
+  #define o formulário
+  form = response['form'](instance=item)
+  
+  # verificar respostar
   if request.method == 'POST' and request.POST:
-    form = LivroForm(request.POST, request.FILES, instance=livro)
+    form = form(request.POST, request.FILES, instance=item)
     if form.is_valid():
       form.save()
       messages.success(request, f"Seu novo {item_label} foi editado com sucesso!")
-      return redirect('livro', livro_id=item_id)
+      return redirect('inicio')
   
   return render(request, join(BASE_PATH, 'editar_item.html'), {
     'form': form,
-    'livro': livro,
-    'item': item_label
+    'item_id': item_id,
+    'label': item_label
   })
   
+
+def deletar_item(request, item_label, item_id):
+  # verificar autenticação
+  if not request.user.is_authenticated:
+    messages.error(request, f"Faça login para poder deletar {item_label} a plataforma")
+    return redirect('inicio')
+  
+  # definir o tipo do item e a qual classe pertence
+  response = definir_item(item_label)
+  if not response:
+    messages.error(request, f"Essa página de cadastro não existe! {item_label}")
+    return redirect('inicio')
+  
+  # definir o item especificamente
+  item = encontrar_item(response['classe_pertencente'], item_id)
+  item.delete()
+  messages.success(request, f"Sua {item_label} foi deletado com sucesso")
+  return redirect('inicio')

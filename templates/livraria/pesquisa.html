@@ -10,20 +10,16 @@
 
 {% block content %}
   <section class="search__configs">
-    {% if searchQuery %}
-      <h1 class="configs__searchQuery">Resultados para a pesquisa: "{{searchQuery}}"</h1>
-    {% elif livros %}
+    {% if pesquisa %}
+      <h1 class="configs__searchQuery">Resultados para a pesquisa: "{{pesquisa}}"</h1>
+    {% else %}
       <h1 class="configs__searchQuery">Veja nossa lista completa de livros</h1>
-    {% elif autores %}
-      <h1 class="configs__searchQuery">Veja nossa lista completa de autores</h1>
     {% endif %}
-  </section>
-        
+
+    <form action="{% url  %}"></form>
+  </section>      
+
   <section class="search__results">
-    {% if livros %}
-      {% include 'partials/livros_cards.html' %}
-    {% elif autores %}
-      {% include 'partials/autores_cards.html' %}
-    {% endif %}
+    {% include 'partials/livros_cards.html' %}
   </section>
 {% endblock content %}

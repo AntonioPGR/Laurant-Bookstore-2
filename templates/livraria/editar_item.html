@@ -13,12 +13,12 @@
       <a class="forms__goback" href="{% url 'inicio' %}">
         <img class="goback__image" src="{% static 'icons/downArrowWhite.svg' %}" alt="">
       </a>
-      <h2 class="forms__titulo">
-        Editar {{ item }}
-      </h2>
+      <h1 class="forms__titulo">
+        Editar {{ label }}
+      </h1>
     </div>
 
-    <form autocomplete="off" action="{% url 'editar-item' item_label=item item_id=livro.id %}" method="POST" class="forms__form forms__cadastro" enctype="multipart/form-data"  >
+    <form autocomplete="off" action="{% url 'editar-item' item_label=label item_id=item_id %}" method="POST" class="forms__form forms__cadastro" enctype="multipart/form-data"  >
 
       {% csrf_token %}
 
@@ -35,7 +35,7 @@
       {% endfor %}  
 
       <button type="submit"  class="botao livro__adicionarCarrinho">
-        Atualizar {{item}}
+        Atualizar {{ label }}
       </button>
     </form>
 

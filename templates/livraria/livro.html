@@ -14,6 +14,9 @@
       <a href="{% url 'editar-item' item_label='livro' item_id=livro.id %}">
         <img class="editar__img" src="{% static 'icons/edit.svg' %}" alt="">
       </a>
+      <a href="{% url 'deletar-item' item_label='livro' item_id=livro.id %}">
+        <img class="editar__img" src="{% static 'icons/delete.svg' %}" alt="">
+      </a>
     </section>
   {% endif %}
     

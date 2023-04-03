@@ -14,28 +14,17 @@
         <img class="goback__image" src="{% static 'icons/downArrowWhite.svg' %}" alt="">
       </a>
       <h1 class="forms__titulo">
-        Cadastrar {{ item }}
+        Deletar {{ label }}
       </h1>
     </div>
 
-    <form autocomplete="off" action="{% url 'novo-item' item_label=item %}" method="POST" class="forms__form forms__cadastro" enctype="multipart/form-data"  >
+    <form autocomplete="off" action="{% url 'editar-item' item_label=label item_id=item.id %}" method="POST" class="forms__form forms__cadastro" enctype="multipart/form-data"  >
 
-      {% csrf_token %}
-
-      {% for field in form.visible_fields %}
-        <div class="inputContainer">
-          <label class="forms__label" for="{{field.id_for_label}}" class="inputText">{{field.label}}</label>
-          {{field}}
-          {% for error in field.errors %}
-            <div class="forms__error">
-                {{error}}
-            </div>
-          {% endfor %}
-        </div>
-      {% endfor %}  
+      <h2>Tem certeza que deseja deletar o {} </h2>
+      <p>Todos seus dados registrados no site e toda sua trajetoria literária sera perdida para sempre!</p>
 
       <button type="submit"  class="botao livro__adicionarCarrinho">
-        Cadastrar {{item}}
+        Atualizar {{ label }}
       </button>
     </form>
 

@@ -42,3 +42,4 @@ def sair_usuario(request):
   messages.success(request, "Logout efetuado com sucesso!")
   logout(request)
   return redirect('entrar')
+    
