@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from os.path import join
 from app.livraria.models import Autor, Livro
-from app.livraria.forms import LivroForm
 from django.contrib import messages
-from app.livraria.utils import definir_item, encontrar_item, filtrar_resultados
+from app.livraria.utils import definir_item, encontrar_item
 
 BASE_PATH = 'livraria/'
 
@@ -38,23 +37,16 @@ def autor(request, autor_id):
   
 def buscar_livros(request):
   
-  resultado_completo = Livro.objects
+  resultado_completo = Livro.objects.order_by('preco')
   resultado_filtrado = resultado_completo
   
   search_query = request.GET['search_query']
   if search_query:
     resultado_filtrado = resultado_filtrado.filter(titulo__contains=search_query)
-    if len(resultado_filtrado) == 0:
-      resultado_filtrado = resultado_filtrado.filter(autor__nome__contains=search_query)
-    
-  # genero_literario = request.GET['genero_literario']
-  # if request.GET['genero_literario']:
-  #   resultado_filtrado = resultado_filtrado.filter(genero_literario__id=genero_literario.id)
       
   return render(request, join(BASE_PATH, 'pesquisa.html'), {
     "livros": resultado_filtrado,
     "pesquisa": search_query,
-    # "genero_literario": genero_literario
   })
 
 

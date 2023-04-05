@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class GeneroLiterario(models.Model):
@@ -35,3 +36,12 @@ class Livro(models.Model):
   def __str__(self) -> str:
     return self.titulo
   
+
+class Carrinho(models.Model):
+
+  
+  usuario = models.ForeignKey(User, blank=True, on_delete=models.CASCADE, null=True,)
+  livro = models.ManyToManyField(Livro, blank=True)
+  
+  def __str__(self) -> str:
+    return self.livro.titulo

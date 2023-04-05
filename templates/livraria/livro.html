@@ -32,9 +32,6 @@
             <h1 class="livro__titulo">{{ livro.titulo }}</h1>
             <a class="livro__autor" href="{% url 'autor' livro.autor.id %}">{{ livro.autor }}</a>
           </div>
-          <i class="livro__favorito">
-            <img src="{% static 'icons/favorite.svg' %}" alt="" class="favorito__imagem">
-          </i>
         </div>
 
         <div class="livro__info">

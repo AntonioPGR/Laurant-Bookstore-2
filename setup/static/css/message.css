@@ -18,6 +18,10 @@
   display: block;
 }
 
+.messages__closeContainer:hover{
+  cursor: pointer;
+}
+
 .messages__close{
   width: 20px;
   height: 20px;
